@@ -141,7 +141,6 @@ a:active {text-decoration: none; color: white;}
 .icon-container i{
   color: #d3d3d3;
   position: relative;
-  left: 48px;
   top: 14px;
 }
 
@@ -156,7 +155,7 @@ a:active {text-decoration: none; color: white;}
   width: 100%;
   max-width: 1024px;
   height: 100%;
-  padding: 4px 0 0 80px;
+  padding: 4px 0 0 36px;
   border: 0px solid #e3e3e3;
   border-radius: 2px;
 }
@@ -219,7 +218,7 @@ a:active {text-decoration: none; color: white;}
 }
 
 .container-right{
-  width: calc(25% -12px);
+  width: calc(25% - 12px);
   float:right;
 }
 
@@ -231,6 +230,7 @@ a:active {text-decoration: none; color: white;}
   margin-bottom: 24px;
   transition: 100ms linear;
   border: 1px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 #container-build:hover{
@@ -240,6 +240,7 @@ a:active {text-decoration: none; color: white;}
   color:#27989f;
   margin-bottom: 24px;
   border: 1px solid #27989f;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .splitter {
@@ -321,12 +322,16 @@ a:active {text-decoration: none; color: white;}
 
 .filter-section ul li{
   color: #a8a8a8;
-  cursor: pointer;
   font-size:14px;
 }
 
-.filter-section ul li:hover{
-  color: #27989f;
+.filter-section ul li span{
+  display:inline-block;
+  margin-left:12px;
+}
+
+.filter-section ul li input{
+  display:inline-block;
 }
 
 .filter-active{
@@ -351,6 +356,16 @@ a:active {text-decoration: none; color: white;}
   margin: 0 5% 70px;
   list-style: none;
   position: relative;
+  transition: 100ms ease-in-out;
+}
+
+#container-apps>li:hover {
+  width: 70px;
+  height: 160px;
+  margin: 0 5% 70px;
+  list-style: none;
+  position: relative;
+  transition: 100ms ease-in-out;
 }
 
 #container-apps>li>a>img {
@@ -374,16 +389,23 @@ a:active {text-decoration: none; color: white;}
   top:80px;
 }
 
+
 .hoverContainer{
   opacity: 0;
   transition: 100ms ease;
   z-index:10;
   right:0;
   position: absolute;
-  top:60px;
+  top:100px;
   background-color: #fff;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
   border-radius: 4px;
+}
+
+.hover-name{
+  text-align: center;
+  font-weight: 700;
+  padding: 12px 0;
 }
 
 .hoverContainer ul li a{

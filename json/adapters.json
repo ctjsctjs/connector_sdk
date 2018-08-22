@@ -7,8 +7,7 @@
      "git":"https://github.com",
      "properties":{
         "Type":"SOAP",
-        "Authentication":"Basic",
-        "Category":"Marketing"
+        "Authentication":"Basic"
      }
   },
   "Aftership":{
@@ -19,8 +18,7 @@
      "git":"https://github.com",
      "properties":{
         "Type":"SOAP",
-        "Authentication":"Basic",
-        "Category":"Developer"
+        "Authentication":"Basic"
      }
   },
   "BMC Innovation Suite":{
