@@ -240,7 +240,7 @@ a:active {text-decoration: none; color: white;}
   color:#27989f;
   margin-bottom: 24px;
   border: 1px solid #27989f;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
 }
 
 .splitter {
@@ -356,16 +356,7 @@ a:active {text-decoration: none; color: white;}
   margin: 0 5% 70px;
   list-style: none;
   position: relative;
-  transition: 100ms ease-in-out;
-}
-
-#container-apps>li:hover {
-  width: 70px;
-  height: 160px;
-  margin: 0 5% 70px;
-  list-style: none;
-  position: relative;
-  transition: 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
 }
 
 #container-apps>li>a>img {
@@ -376,29 +367,29 @@ a:active {text-decoration: none; color: white;}
   background-size: auto 100%;
 }
 
-#container-apps>li>a>img:hover{
-  opacity: 0.8;
-  transition: opacity .25s ease;
-  -moz-transition: opacity .25s ease;
-  -webkit-transition: opacity .25s ease;
-}
-
 .app:hover .hoverContainer {
-  transition: all 200ms ease;
+  transition: all 100ms ease-in-out;
   opacity: 1;
+  visibility: visible;
   top:80px;
 }
 
+#container-apps>li:hover {
+  height:160px;
+}
 
 .hoverContainer{
+  transition: all 100ms ease-in-out;
+  visibility: hidden;
   opacity: 0;
-  transition: 100ms ease;
   z-index:10;
-  right:0;
   position: absolute;
-  top:100px;
+  left: 50%;
+  margin-left: -80px;
+  width:160px;
+  top:72px;
   background-color: #fff;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   border-radius: 4px;
 }
 
@@ -406,6 +397,8 @@ a:active {text-decoration: none; color: white;}
   text-align: center;
   font-weight: 700;
   padding: 12px 0;
+  border-bottom: solid 1px #e2e2e2;
+  color:#525252;
 }
 
 .hoverContainer ul li a{
@@ -417,15 +410,15 @@ a:active {text-decoration: none; color: white;}
 
 .hoverContainer ul li a:last-child{
   padding: 18px;
-  color:#525252;
+  color: #27989f;
   border-bottom: 0px;
+  transition: border-left 100ms ease-out;
 }
 
 .hoverContainer ul li a:hover{
-  background-color:#fafafa;
-  color: #27989f;
+  border-left: 3px solid #27989f;
+  transition: border-left 100ms ease-out;
 }
-
 
 .hoverContainer-show{
   display:block;

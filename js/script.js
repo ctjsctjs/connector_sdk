@@ -41,6 +41,7 @@ function filterHandler() {
   });
 }
 
+
 //Load JSON
 function loadJSON() {
   $.ajax({
@@ -172,7 +173,7 @@ function generateFilters(filters) {
           "value": value,
           "name": i
         }).appendTo(li);
-      }      
+      }
       var label = $("<span>").html(value).appendTo(li);
     });
     isFirstInput = true;
