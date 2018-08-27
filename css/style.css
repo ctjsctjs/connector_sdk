@@ -133,7 +133,6 @@ a:active {text-decoration: none; color: white;}
   height:48px;
   width: 100%;
   margin: 0 auto 0 auto;
-  padding: 0 20px 0 20px;
   position: relative;
   border-bottom: 1px solid #e3e3e3;
 }
@@ -151,11 +150,28 @@ a:active {text-decoration: none; color: white;}
   height: 0;
 }
 
+.icon-search{
+  padding-left:12px;
+}
+
+.icon-cross{
+  padding-right:12px;
+}
+
+.icon-cross i{
+  float:right;
+  cursor: pointer;
+}
+
+.icon-cross i:hover{
+  color:#27989f;
+}
+
 .search-form{
   width: 100%;
   max-width: 1024px;
   height: 100%;
-  padding: 4px 0 0 36px;
+  padding: 4px 0 0 48px;
   border: 0px solid #e3e3e3;
   border-radius: 2px;
 }
@@ -508,6 +524,16 @@ a:active {text-decoration: none; color: white;}
     width: 100%;
   }
   .container-right{
-    display:none;
+    width:100%;
+    margin-bottom:12px;
+  }
+
+  .filter-section ul li{
+    display:inline-block;
+    margin-right:18px;
+  }
+
+  .filter-section ul li span{
+    margin-left:6px;
   }
 }

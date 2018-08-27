@@ -9,6 +9,7 @@ $(document).ready(function () {
   loadJSON();
   generateAdapters();
   filterHandler();
+  clearSearch();
   $('.filter-input').trigger('change');
 });
 
@@ -194,4 +195,16 @@ function toggleSideNav() {
 //Function to toggle hover container
 function toggleHover(item) {
   $(item).children(".hoverContainer").toggleClass("hoverContainer-show");
+}
+
+function clearSearch() {
+  $("#clearForm").click(function () {
+    var form = $("#search-form");
+    $(form).val("");
+
+    $('.app').each(function () {
+      $(this).removeClass("search-hidden");
+    });
+    checkAllHidden();
+  })
 }

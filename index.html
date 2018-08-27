@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/nav.css" />
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -24,13 +25,13 @@
 
 <body>
   <nav class="side-nav">
-  <ul>
-    <li><a target="_blank" href="https://github.com/workato/custom_connector_docs">Github</a></li>
-    <li><a target="_blank" href="https://docs.workato.com/developing-connectors/sdk.html">Documentation</a></li>
-    <li><a target="_blank" href="https://support.workato.com/support/tickets/new">Submit Connector</a></li>
-    <li><a class="" target="_blank" href="https://workato.com">Return to Workato</a></li>
-  </ul>
-</nav>
+    <ul>
+      <li><a target="_blank" href="https://github.com/workato/custom_connector_docs">Github</a></li>
+      <li><a target="_blank" href="https://docs.workato.com/developing-connectors/sdk.html">Documentation</a></li>
+      <li><a target="_blank" href="https://support.workato.com/support/tickets/new">Submit Connector</a></li>
+      <li><a class="" target="_blank" href="https://workato.com">Return to Workato</a></li>
+    </ul>
+  </nav>
 
   <div class="page">
     <nav class="nav-bar nav-home">
@@ -38,14 +39,14 @@
       <ul class="res-padding">
         <li>
           <a class="logo-wrapper" href="http://developer.workato.com/">
-              <img class="workato-logo" src="images/logo.svg">
+            <img class="workato-logo" src="images/logo.svg">
           </a>
         </li>
         <li class="nav-link"><a target="_blank" href="https://github.com/workato/custom_connector_docs">Github</a></li>
         <li class="nav-link"><a target="_blank" href="https://docs.workato.com/developing-connectors/sdk.html">Documentation</a></li>
         <li class="nav-link"><a target="_blank" href="https://support.workato.com/support/tickets/new">Submit Connector</a></li>
         <li class="return-link"><a class="nav-link" target="_blank" href="https://workato.com">Return to Workato</a></li>
-        <li class="nav-hamburg" ><a href="#/"><i class="fas fa-bars"></i></a></li>
+        <li class="nav-hamburg"><a href="#/"><i class="fas fa-bars"></i></a></li>
       </ul>
     </nav>
     <div id="nav-dummy" class="nav-dummy"></div>
@@ -61,26 +62,32 @@
     <!--Search bar-->
     <div class="container" id="search-bar">
       <input class="search-form" placeholder="Search for an connector" id="search-form" oninput="filterFunc(this)">
-      <div class="icon-container"><i class="material-icons">search</i></div>
+      <div class="icon-container icon-search"><i class="material-icons">search</i></div>
+      <div class="icon-container icon-cross"><i class="material-icons" id="clearForm">close</i></div>
+
     </div>
     <!--Connector List section-->
     <div class="list-wrapper">
       <div class="container-wrapper clearfix" id="app-wrapper">
         <div class="res-padding">
+          <div class="container container-right">
+            <div class="container" id="container-filter"></div>
+          </div>
           <div class="container-left">
-            <a href="https://docs.workato.com/developing-connectors/sdk.html"  target="_blank" class="container" id="container-build">Click here to build your own connector with our SDK</a>
+            <a href="https://docs.workato.com/developing-connectors/sdk.html" target="_blank" class="container" id="container-build">Click
+              here to build your own connector with our SDK</a>
             <div class="container" id="no-result">
               <span class="no-result-text">
                 We don’t support that application yet.
                 <br>Learn to build your own custom connector above.
               </span>
-          </div>
-            <h2 class="splitter"><div class="splitter__text">CUSTOM CONNECTORS</div></h2>
+            </div>
+            <h2 class="splitter">
+              <div class="splitter__text">CUSTOM CONNECTORS</div>
+            </h2>
             <ul class="container" id="container-apps"></ul>
           </div>
-          <div class="container container-right">
-            <div class="container" id="container-filter"></div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -88,7 +95,8 @@
     <footer class="footer">
       <div class="res-padding">
         <div class="section-padding">
-          Apps listed on this marketplace are created by third party vendors. These applications are not warranted or provided by Workato. Please look through their documentation and ensure that these apps are right for you before proceeding.<br><br>
+          Apps listed on this marketplace are created by third party vendors. These applications are not warranted or provided by Workato.
+          Please look through their documentation and ensure that these apps are right for you before proceeding.<br><br>
           <ul class="footer-links">
             <li>Workato 2018 ©</li>
             <li><a target="_blank" href="https://www.workato.com/legal/privacy-policy">Privacy</a></li>
