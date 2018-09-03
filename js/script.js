@@ -27,16 +27,21 @@ function filterHandler() {
 
     //Toggle hidden according to filter match
     $('.app').each(function () {
-
+      var parent = this;
       var name = $(this).find(".item-name").html();
-      var properties = json[name].properties;
-      var state = false;
+      $.each(json, function (key, object) {
 
-      if (_.isEqual(filterList, properties) == false) {
-        $(this).addClass("filter-hidden");
-      } else {
-        $(this).removeClass("filter-hidden");
-      }
+        if (this.name == name) {
+          var properties = this.properties;
+          var state = false;
+     
+          if (_.isEqual(filterList, properties) == false) {
+            $(parent).addClass("filter-hidden");
+          } else {
+            $(parent).removeClass("filter-hidden");
+          }
+        }
+      })
     })
     checkAllHidden();
   });
@@ -98,16 +103,16 @@ function generateAdapters() {
   var ul = $('#container-apps');
 
   //Generate app list from adapters.JSON
-  Object.keys(json).forEach(function (key) {
+  $.each(json, (function (object) {
 
     //Count adapter for no result function
     adapterCount += 1;
 
-    var link = json[key].link;
-    var git = json[key].git;
-    var img = json[key].image;
-    var name = json[key].name;
-    var properties = json[key].properties;
+    var link = json[object].link;
+    var git = json[object].git;
+    var img = json[object].image;
+    var name = json[object].name;
+    var properties = json[object].properties;
 
     //Load filter options
     $.each(properties, function (i, item) {
@@ -135,7 +140,7 @@ function generateAdapters() {
     var hoverPageA = $("<a>").attr({ "href": link, "target": "_blank", "class": "app-link" }).html("Install Connector").appendTo(hoverPageLi);
     var hoverGitLi = $("<li>").appendTo(hoverUL);
     var hoverGitA = $("<a>").attr({ "href": git, "target": "_blank", "class": "app-link" }).html("View Source Code").appendTo(hoverGitLi);
-  });
+  }));
 
   //Generate dummy box for responsive
   for (var i = 0; i < (listCol); i++) {
