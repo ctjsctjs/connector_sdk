@@ -156,6 +156,7 @@ a:active {text-decoration: none; color: white;}
 
 .icon-cross{
   padding-right:12px;
+  margin-top: -1px;
 }
 
 .icon-cross i{
@@ -186,6 +187,7 @@ a:active {text-decoration: none; color: white;}
   padding: 0px;
   background-color:#fafafa;
   padding-top:48px;
+  padding-bottom:48px;
 }
 
 .list-header{
@@ -230,7 +232,7 @@ a:active {text-decoration: none; color: white;}
 .container-left{
   width:75%;
   float:left;
-  padding-bottom:48px;
+  padding-bottom:px;
 }
 
 .container-right{
@@ -384,29 +386,39 @@ a:active {text-decoration: none; color: white;}
 }
 
 .app:hover .hoverContainer {
-  transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in;
   opacity: 1;
   visibility: visible;
   top:80px;
 }
-
+/* 
 #container-apps>li:hover {
   height:160px;
-}
+} */
 
 .hoverContainer{
-  transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in;
   visibility: hidden;
   opacity: 0;
   z-index:10;
   position: absolute;
   left: 50%;
-  margin-left: -80px;
-  width:160px;
-  top:72px;
+  margin-left: -90px;
+  width:180px;
+  top:100px;
   background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
   border-radius: 4px;
+}
+
+.property-filter{
+  color: #27989f;
+  padding-right: 4px;
+  font-size:12px;
+}
+
+.property-value{
+  font-size:12px;
 }
 
 .hover-name{
@@ -417,23 +429,37 @@ a:active {text-decoration: none; color: white;}
   color:#525252;
 }
 
+.hover-properties{
+  padding: 12px;
+  border-bottom: solid 1px #e2e2e2;
+}
+
+.hover-properties li{
+  padding: 4px 0;
+}
+
+.hover-properties li span{
+  display:inline-block;
+}
+
 .hoverContainer ul li a{
-  padding: 18px;
+  padding: 12px;
   color:#525252;
-  border-bottom: 1px solid #525252;
+  border: 1px solid #27989f;
+  border-radius: 4px;
+  margin: 12px 12px;
   white-space: nowrap;
 }
 
 .hoverContainer ul li a:last-child{
-  padding: 18px;
   color: #27989f;
-  border-bottom: 0px;
-  transition: border-left 100ms ease-out;
+  transition: 100ms ease-out;
 }
 
 .hoverContainer ul li a:hover{
-  border-left: 3px solid #27989f;
-  transition: border-left 100ms ease-out;
+  transition: 100ms ease-out;
+  background-color: #27989f;
+  color:white;
 }
 
 .hoverContainer-show{
@@ -517,6 +543,11 @@ a:active {text-decoration: none; color: white;}
     color: #27989f;
     margin: 10px 0 15px 0;
   }
+
+  
+.hoverContainer{
+  margin-left: -80px;
+  width:160px;
 }
 
 @media only screen and (max-width: 1024px) {

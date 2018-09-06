@@ -3,23 +3,27 @@ var adapterCount = 0;
 var hiddenCount = 0;
 var json;
 var filterList = {};
-
+var textFormat = {
+  "api_type": "API Type",
+  "auth_type": "Auth Type",
+  "category": "Category"
+}
 //On Init
 $(document).ready(function () {
   loadJSON();
   generateAdapters();
   filterHandler();
   clearSearch();
-  $('.filter-input').trigger('change');
 });
 
 //Handle filter navigation clicks
 function filterHandler() {
   $("body").on("change", ".filter-input", function () {
-
     //Get filter and value selected
-    var filter = ($(this).closest("ul").siblings("h5").html());
+    var filterHTML = ($(this).closest("ul").siblings("h5").html())
+    var filter = (_.invert(textFormat)[filterHTML]);
     var val = $(this).val();
+    var currentFilter = {};
 
     if ($(this).is(':checked')) {
       (filterList[filter] = val);
@@ -29,19 +33,25 @@ function filterHandler() {
     $('.app').each(function () {
       var parent = this;
       var name = $(this).find(".item-name").html();
-      $.each(json, function (key, object) {
+      valid = true;
 
-        if (this.name == name) {
-          var properties = this.properties;
-          var state = false;
-     
-          if (_.isEqual(filterList, properties) == false) {
-            $(parent).addClass("filter-hidden");
-          } else {
-            $(parent).removeClass("filter-hidden");
-          }
+      $(this).children(".hoverContainer").children(".hover-properties").children("li").each(function () {
+        tempFilter = (_.invert(textFormat)[$(this).find(".property-filter").html().slice(0, -1)]);
+        tempValue = $(this).find(".property-value").html();
+        currentFilter[tempFilter] = tempValue;
+      })
+      $.each(currentFilter, function (key, object) {
+        if ((filterList[key] == object || filterList[key] == "")) {
+        } else {
+          valid = false;
         }
       })
+
+      if (valid == false) {
+        $(parent).addClass("filter-hidden");
+      } else {
+        $(parent).removeClass("filter-hidden");
+      }
     })
     checkAllHidden();
   });
@@ -109,20 +119,12 @@ function generateAdapters() {
     adapterCount += 1;
 
     var link = json[object].link;
-    var git = json[object].git;
+    var git = json[object].github_link;
     var img = json[object].image;
     var name = json[object].name;
     var properties = json[object].properties;
 
-    //Load filter options
-    $.each(properties, function (i, item) {
-      if (!(i in filters)) {
-        filters[i] = [];
-      }
-      if (!(filters[i].includes(item))) {
-        filters[i].push(item);
-      }
-    })
+
 
     var li = $("<li>").attr({ "class": "app" }).appendTo(ul);
     var a = $("<a>").attr({
@@ -134,12 +136,26 @@ function generateAdapters() {
     var image = $("<img>").attr("src", img).appendTo(a);
     var label = $("<div>").attr("class", "item-name black-font").html(name).appendTo(a);
     var hoverContainer = $("<div>").attr("class", "hoverContainer").appendTo(li);
+    var hoverName = $("<span>").attr("class", "hover-name").html(name).appendTo(hoverContainer);
+    var hoverProperties = $("<ul>").attr("class", "hover-properties").appendTo(hoverContainer);
     var hoverUL = $("<ul>").appendTo(hoverContainer);
-    var hoverName = $("<span>").attr("class", "hover-name").html(name).appendTo(hoverUL);
     var hoverPageLi = $("<li>").attr("class", name).appendTo(hoverUL);
     var hoverPageA = $("<a>").attr({ "href": link, "target": "_blank", "class": "app-link" }).html("Install Connector").appendTo(hoverPageLi);
     var hoverGitLi = $("<li>").appendTo(hoverUL);
     var hoverGitA = $("<a>").attr({ "href": git, "target": "_blank", "class": "app-link" }).html("View Source Code").appendTo(hoverGitLi);
+
+    //Load filter options
+    $.each(properties, function (i, item) {
+      if (!(i in filters)) {
+        filters[i] = [];
+      }
+      if (!(filters[i].includes(item))) {
+        filters[i].push(item);
+      }
+      var hoverProperty = $("<li>").appendTo(hoverProperties)
+      var hoverPropertyFilter = $("<span>").attr("class", "property-filter").html(textFormat[i] + ":").appendTo(hoverProperty);
+      var hoverPropertyValue = $("<span>").attr("class", "property-value").html(item).appendTo(hoverProperty);
+    })
   }));
 
   //Generate dummy box for responsive
@@ -152,34 +168,19 @@ function generateAdapters() {
 function generateFilters(filters) {
   var container = $("#container-filter");
   $.each(filters, function (i, item) {
-    var isFirstInput = true;
+    filterList[i] = ""; //Init empty filter values
     var div = $("<div>").attr("class", "filter-section").appendTo(container);
-    var title = $("<h5>").html(i).appendTo(div);
+    var title = $("<h5>").html(textFormat[i]).appendTo(div);
     var ul = $("<ul>").appendTo(div);
-
+    i
     $.each(item, function (k, value) {
       var li = $("<li>").appendTo(ul);
-
-      if (isFirstInput == true) {
-
-        filterList[i] = value;
-
-        var radioButtons = $("<input>").attr({
-          "class": "filter-input",
-          "type": "radio",
-          "value": value,
-          "name": i,
-          "checked": true
-        }).appendTo(li);
-        isFirstInput = false;
-      } else {
-        var radioButtons = $("<input>").attr({
-          "class": "filter-input",
-          "type": "radio",
-          "value": value,
-          "name": i
-        }).appendTo(li);
-      }
+      var radioButtons = $("<input>").attr({
+        "class": "filter-input",
+        "type": "radio",
+        "value": value,
+        "name": i
+      }).appendTo(li);
       var label = $("<span>").html(value).appendTo(li);
     });
     isFirstInput = true;
