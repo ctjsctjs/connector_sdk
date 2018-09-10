@@ -232,7 +232,7 @@ a:active {text-decoration: none; color: white;}
 .container-left{
   width:75%;
   float:left;
-  padding-bottom:px;
+  padding-bottom: 128px;
 }
 
 .container-right{
@@ -543,13 +543,12 @@ a:active {text-decoration: none; color: white;}
     color: #27989f;
     margin: 10px 0 15px 0;
   }
-
   
-.hoverContainer{
-  margin-left: -80px;
-  width:160px;
+  .hoverContainer{
+    margin-left: -80px;
+    width:160px;
+  }
 }
-
 @media only screen and (max-width: 1024px) {
   .container-left{
     width: 100%;
