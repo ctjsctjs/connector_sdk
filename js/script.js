@@ -75,7 +75,8 @@ function loadJSON() {
 function filterFunc(event) {
   var userInput = event.value.toUpperCase();
   $('.app').each(function () {
-    if (this.textContent.toUpperCase().indexOf(userInput) > -1) {
+    var name = $(this).find(".item-name").html();
+    if (name.toUpperCase().indexOf(userInput) > -1) {
       $(this).removeClass("search-hidden");
     } else {
       $(this).addClass("search-hidden");
